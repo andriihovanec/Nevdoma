@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#D32F2F</color>
+
+    <color name="white">#ffffff</color>
+    <color name="tab2">#00695C</color>
+    <color name="tab3">#004D40</color>
+
+    [pastacode lang=»bash» message=»colors.xml» highlight=»» provider=»manual»]
+
+        <!--?xml version="1.0" encoding="utf-8"?-->
+
+        #00897B
+        #00695C
+        #004D40
+
+    [/pastacode]
 </resources>
+
+
