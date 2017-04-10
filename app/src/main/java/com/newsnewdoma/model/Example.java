@@ -2,6 +2,7 @@
 package com.newsnewdoma.model;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,13 +25,13 @@ public class Example {
     private Address address;
     @SerializedName("whenDate")
     @Expose
-    private Integer whenDate;
+    private Long whenDate;
     @SerializedName("categories")
     @Expose
     private List<Category> categories = null;
     @SerializedName("price")
     @Expose
-    private Object price;
+    private String price;
     @SerializedName("source")
     @Expose
     private String source;
@@ -75,11 +76,11 @@ public class Example {
         this.address = address;
     }
 
-    public Integer getWhenDate() {
+    public Long getWhenDate() {
         return whenDate;
     }
 
-    public void setWhenDate(Integer whenDate) {
+    public void setWhenDate(Long whenDate) {
         this.whenDate = whenDate;
     }
 
@@ -95,7 +96,7 @@ public class Example {
         return price;
     }
 
-    public void setPrice(Object price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.newsnewdoma.R;
-import com.newsnewdoma.model.Events;
+import com.newsnewdoma.model.Example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by User on 06.03.2017.
@@ -17,14 +18,14 @@ import java.util.ArrayList;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
-    private ArrayList<Events> events;
-    public DataAdapter(ArrayList<Events> events) {
+    private ArrayList<Example> events;
+    public DataAdapter(ArrayList<Example> events) {
         this.events = events;
     }
 
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_row, parent);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_row, parent, false);
         return new ViewHolder(view);
     }
 
@@ -32,12 +33,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public void onBindViewHolder(DataAdapter.ViewHolder holder, int position) {
         holder.tv_title.setText(events.get(position).getTitle());
         holder.tv_description.setText(events.get(position).getDescription());
-        holder.tv_address.setText(events.get(position).getAddress());
+//        holder.tv_address.setText(events.get(position).getAddress());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return events.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -47,7 +48,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
             tv_title = (TextView)view.findViewById(R.id.tv_name);
             tv_description = (TextView)view.findViewById(R.id.tv_version);
-            tv_address = (TextView)view.findViewById(R.id.tv_api_level);
+//            tv_address = (TextView)view.findViewById(R.id.tv_api_level);
 
         }
     }
