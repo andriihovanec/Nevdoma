@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg_land"
     tools:context="com.newsnewdoma.MainActivity"
     android:weightSum="1">
 
