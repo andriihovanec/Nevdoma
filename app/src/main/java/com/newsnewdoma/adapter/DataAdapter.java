@@ -1,8 +1,6 @@
 package com.newsnewdoma.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.newsnewdoma.R;
-import com.newsnewdoma.model.Example;
+import com.newsnewdoma.model.Events;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -22,8 +20,8 @@ import java.util.Date;
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private static final String BASE_IMAGE_URL = "http://nevdoma.com/";
 
-    private ArrayList<Example> events;
-    public DataAdapter(ArrayList<Example> events) {
+    private ArrayList<Events> events;
+    public DataAdapter(ArrayList<Events> events) {
         this.events = events;
     }
 

@@ -2,7 +2,7 @@ package com.newsnewdoma;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.newsnewdoma.model.Example;
+import com.newsnewdoma.model.Events;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class ApiService {
     public interface RequestInterface {
 
         @GET("/api/events")
-        Call<ArrayList<Example>> getJSON();
+        Call<ArrayList<Events>> getJSON();
     }
 
 

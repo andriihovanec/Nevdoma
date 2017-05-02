@@ -5,13 +5,13 @@ import java.util.List;
 
 public class ExampleData {
 
-    private List<Example> exampleList = null;
+    private List<Events> eventsList = null;
 
-    public List<Example> getExampleList() {
-        return exampleList;
+    public List<Events> getEventsList() {
+        return eventsList;
     }
 
-    public void setExampleList(List<Example> exampleList) {
-        this.exampleList = exampleList;
+    public void setEventsList(List<Events> eventsList) {
+        this.eventsList = eventsList;
     }
 }

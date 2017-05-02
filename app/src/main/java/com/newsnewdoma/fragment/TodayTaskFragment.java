@@ -1,6 +1,7 @@
 package com.newsnewdoma.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -10,33 +11,33 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.newsnewdoma.ApiService;
 import com.newsnewdoma.R;
 import com.newsnewdoma.adapter.DataAdapter;
-import com.newsnewdoma.model.Example;
+import com.newsnewdoma.model.Events;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class TodayTaskFragment extends Fragment {
 
     RecyclerView recyclerView;
-    private ArrayList<List<Example>> data;
     RecyclerView.LayoutManager layoutManager;
     private DataAdapter adapter;
+    private ArrayList<Events> todayList;
+    private TextView tvEmpty;
 
 
     public TodayTaskFragment() {
         // Required empty public constructor
     }
+
+    @SuppressLint("ValidFragment")
+    public TodayTaskFragment(ArrayList<Events> todayList) {
+        this.todayList = todayList;
+    }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -49,32 +50,15 @@ public class TodayTaskFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        loadJSON();
+        tvEmpty = (TextView) rootView.findViewById(R.id.today_events_empty);
 
+        adapter = new DataAdapter(todayList);
+
+        //
+        if (todayList.isEmpty()) {
+            tvEmpty.setText("Вибачте, на данний день подій немає");
+        }
+        recyclerView.setAdapter(adapter);
         return rootView;
-    }
-
-    private void loadJSON() {
-
-        Call<ArrayList<Example>> call = ApiService.getRequestInterface().getJSON();
-        call.enqueue(new Callback<ArrayList<Example>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Example>> call, Response<ArrayList<Example>> response) {
-
-                if (response.isSuccessful()) {
-                    ArrayList<Example> example = response.body();
-                    adapter = new DataAdapter(example);
-                    recyclerView.setAdapter(adapter);
-                    Toast.makeText(getActivity(), "Successful", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getActivity(), "Error response message", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Example>> call, Throwable t) {
-                Toast.makeText(getActivity(), "Failure response", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }
