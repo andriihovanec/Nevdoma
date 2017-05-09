@@ -1,14 +1,21 @@
 package com.newsnewdoma.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.newsnewdoma.DetailActivity;
+import com.newsnewdoma.MainActivity;
 import com.newsnewdoma.R;
+import com.newsnewdoma.fragment.DetailFragment;
 import com.newsnewdoma.model.Events;
 import com.squareup.picasso.Picasso;
 
@@ -19,6 +26,8 @@ import java.util.Date;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private static final String BASE_IMAGE_URL = "http://nevdoma.com/";
+
+    private Context context;
 
     private ArrayList<Events> events;
     public DataAdapter(ArrayList<Events> events) {
@@ -57,11 +66,28 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return events.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_title, tv_whenDate, tv_address;
         private ImageView iv_event;
-        public ViewHolder(View view) {
+
+        private ViewHolder(final View view) {
             super(view);
+            context = view.getContext();
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("event", getAdapterPosition());
+                    /*intent.putExtra("event", events.get(getAdapterPosition()).getTitle());
+                    intent.putExtra("event_img", events.get(getAdapterPosition()).getImageUrl());
+                    intent.putExtra("event_address", events.get(getAdapterPosition()).g.getAddress().getCity());*/
+                    context.startActivity(intent);
+                    Toast.makeText(v.getContext(),"clicked=" + getPosition(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
             tv_title = (TextView)view.findViewById(R.id.tv_title);
             tv_whenDate = (TextView)view.findViewById(R.id.tv_whenDate);

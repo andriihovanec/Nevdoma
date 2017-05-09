@@ -54,7 +54,6 @@ public class TodayTaskFragment extends Fragment {
 
         adapter = new DataAdapter(todayList);
 
-        //
         if (todayList.isEmpty()) {
             tvEmpty.setText("Вибачте, на данний день подій немає");
         }
