@@ -10,22 +10,32 @@ import android.widget.TextView;
 import com.newsnewdoma.model.Events;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class DetailActivity extends AppCompatActivity {
 
     private static final String BASE_IMAGE_URL = "http://nevdoma.com/";
-    TextView tvDetail;
-    TextView tvAddress;
+    @BindView(R.id.iv_detail_event)
     ImageView ivDetailIMG;
-    ArrayList<Events> events;
-    Events e = new Events();
+    @BindView(R.id.tv_detail_title)
+    TextView tvTitle;
+    @BindView(R.id.tv_detail_address)
+    TextView tvCity;
+    @BindView(R.id.tv_price)
+    TextView tvPrice;
+    @BindView(R.id.tv_description)
+    TextView tvDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,23 +44,24 @@ public class DetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        tvDetail = (TextView) findViewById(R.id.tv_detail_title);
-        tvAddress = (TextView) findViewById(R.id.tv_detail_address);
-        ivDetailIMG = (ImageView) findViewById(R.id.iv_detail_event);
+        Events events = getIntent().getParcelableExtra("Events");
 
-        /*String title = getIntent().getExtras().getString("event");
-        String t = events.get(getIntent().getExtras().get("event").);*/
-        int position = getIntent().getExtras().getInt("event");
-
-        tvDetail.setText(events.get(position).getTitle());
-        /*String address = getIntent().getExtras().getString("event_address");
-        String img = getIntent().getExtras().getString("event_img");
         Context context = getApplicationContext();
         Picasso.with(context)
-                .load(BASE_IMAGE_URL + img)
-                //.fit()
+                .load(BASE_IMAGE_URL + events.getImageUrl())
                 .into(ivDetailIMG);
-        tvDetail.setText(title);
-        tvAddress.setText(address);*/
+
+        tvTitle.setText(events.getTitle());
+        tvCity.setText(events.getAddress().getApartment() + ", " +
+                events.getAddress().getCity() + ", " +
+                events.getAddress().getStreet() + " " +
+                events.getAddress().getBuildingNumber());
+        if (events.getPrice() != null) {
+            tvPrice.setText(events.getPrice());
+        } else {
+            tvPrice.setText("ціна не вказана");
+        }
+        tvDescription.setText(events.getDescription());
+
     }
 }
