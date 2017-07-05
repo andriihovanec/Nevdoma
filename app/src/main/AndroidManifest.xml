@@ -21,10 +21,12 @@
         <activity
             android:name=".AboutActivity"
             android:label="@string/about"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EventsActivity"
-            android:label="@string/events"
+            android:label="@string/eventsList"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".FilmsActivity"

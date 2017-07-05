@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         background.setAlpha(120);
 
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/JunegullRegular.ttf");
-        TextView tv_events = (TextView) findViewById(R.id.events);
+        TextView tv_events = (TextView) findViewById(R.id.eventsList);
         tv_events.setTypeface(type);
         tv_events.setOnClickListener(new View.OnClickListener() {
             @Override
