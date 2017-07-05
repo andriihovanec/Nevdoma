@@ -55,7 +55,7 @@ public class TomorrowTaskFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new DataAdapter(tomorrowList);
+        adapter = new DataAdapter(getActivity(), tomorrowList);
         recyclerView.setAdapter(adapter);
 
         return rootView;

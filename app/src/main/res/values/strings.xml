@@ -2,7 +2,7 @@
     <string name="app_name">NeWdoma</string>
     <string name="test">NeWdoma</string>
 
-    <string name="events">ПОДІЇ</string>
+    <string name="eventsList">ПОДІЇ</string>
     <string name="films">ФІЛЬМИ</string>
     <string name="add_event">ДОДАТИ ПОДІЮ</string>
     <string name="about">ПРО НАС</string>
@@ -21,4 +21,7 @@
         \n\nПроект допоможе користувачеві знайти всі заплановані події в Івано-Франківську в одному місці,
         а також розмістити і поділитися інформацією про нові, відомі йому події.
     </string>
+
+    <string name="price">ціна не вказана</string>
+    <string name="address">address</string>
 </resources>

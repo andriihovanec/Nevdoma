@@ -22,7 +22,7 @@
         android:layout_weight="0.01" />
 
     <TextView
-        android:id="@+id/events"
+        android:id="@+id/eventsList"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,7 +30,7 @@
         android:background="@drawable/states_shapes"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:text="@string/events"
+        android:text="@string/eventsList"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:gravity="center"/>

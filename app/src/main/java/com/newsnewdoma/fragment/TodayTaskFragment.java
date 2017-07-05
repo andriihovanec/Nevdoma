@@ -52,7 +52,7 @@ public class TodayTaskFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         tvEmpty = (TextView) rootView.findViewById(R.id.today_events_empty);
 
-        adapter = new DataAdapter(todayList);
+        adapter = new DataAdapter(getContext(), todayList);
 
         if (todayList.isEmpty()) {
             tvEmpty.setText("Вибачте, на данний день подій немає");

@@ -1,12 +1,17 @@
 
 package com.newsnewdoma.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Events {
+public class Events implements Parcelable {
 
     @SerializedName("_id")
     @Expose
@@ -35,6 +40,7 @@ public class Events {
     @SerializedName("source")
     @Expose
     private String source;
+
 
     public String getId() {
         return id;
@@ -92,7 +98,7 @@ public class Events {
         this.categories = categories;
     }
 
-    public Object getPrice() {
+    public String getPrice() {
         return price;
     }
 
@@ -108,4 +114,49 @@ public class Events {
         this.source = source;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.title);
+        dest.writeString(this.description);
+        dest.writeString(this.imageUrl);
+        dest.writeParcelable(this.address, flags);
+        dest.writeValue(this.whenDate);
+        dest.writeList(this.categories);
+        dest.writeString(this.price);
+        dest.writeString(this.source);
+    }
+
+    public Events() {
+    }
+
+    protected Events(Parcel in) {
+        this.id = in.readString();
+        this.title = in.readString();
+        this.description = in.readString();
+        this.imageUrl = in.readString();
+        this.address = in.readParcelable(Address.class.getClassLoader());
+        this.whenDate = (Long) in.readValue(Long.class.getClassLoader());
+        this.categories = new ArrayList<Category>();
+        in.readList(this.categories, Category.class.getClassLoader());
+        this.price = in.readString();
+        this.source = in.readString();
+    }
+
+    public static final Creator<Events> CREATOR = new Creator<Events>() {
+        @Override
+        public Events createFromParcel(Parcel source) {
+            return new Events(source);
+        }
+
+        @Override
+        public Events[] newArray(int size) {
+            return new Events[size];
+        }
+    };
 }

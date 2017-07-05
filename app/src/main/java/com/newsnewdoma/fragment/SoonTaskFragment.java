@@ -49,7 +49,7 @@ public class SoonTaskFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new DataAdapter(tomorrowList);
+        adapter = new DataAdapter(getContext(), tomorrowList);
         recyclerView.setAdapter(adapter);
 
         return rootView;
