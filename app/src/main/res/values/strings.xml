@@ -6,6 +6,7 @@
     <string name="films">ФІЛЬМИ</string>
     <string name="add_event">ДОДАТИ ПОДІЮ</string>
     <string name="about">ПРО НАС</string>
+    <string name="detail_event">Подія</string>
 
     <string name="today_task">Сьогодні</string>
     <string name="tomorrow_task">Завтра</string>

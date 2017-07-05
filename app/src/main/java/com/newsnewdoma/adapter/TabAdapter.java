@@ -29,7 +29,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int i) {
 
-        /*switch (i) {
+        switch (i) {
             case 0:
                 return new TodayTaskFragment(todayList);
             case 1:
@@ -38,14 +38,6 @@ public class TabAdapter extends FragmentStatePagerAdapter {
                 return new SoonTaskFragment(soonList);
             default:
                 return null;
-        }*/
-
-        if (i == 0) {
-            return new TodayTaskFragment(todayList);
-        } else if (i == 1) {
-            return new TomorrowTaskFragment(tomorrowList);
-        } else {
-            return new SoonTaskFragment(soonList);
         }
 
     }
